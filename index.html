@@ -13,44 +13,59 @@
         </header>
         <main>
             <div class="tabs">
-                <button id="todayTab">Today</button>
-                <button id="pendingTab">Pending</button>
-                <button id="overdueTab">Overdue</button>
+                <button class="btn btnTodayTab" >Today</button>
+                <button class="btn btnPendingTab active">Pending</button>
+                <button class="btn btnOverdueTab">Overdue</button>
+                <button class="btn btnCompleted">Completed</button>
             </div>
             <div class="task-list">
+                    <form class="taskAction">
+                        <div class="taskName">
+                            <label for="">Task: </label>
+                            <input class="todo-input" type="text" placeholder=" Add a task">
+                        </div>
+
+                        <div class="deadline">
+                            <label>Deadline: </label>
+                            <input type="date" name="deadline">
+                        </div>
+                        <button class="btn addTaskButton">+ Add Task</button>
+                    </form>
+
                 <h2>Tasks</h2>
                 <ul id="tasks">
-                    <li>
-                        <input type="checkbox">
-                        <span>Draft Project Proposal</span>
-                        <span class="task-date">Tue Oct 17 2023</span>
-                        <span class="priority red"></span>
+                    <li class="tab-content">
+                        <div>
+                            <input type="checkbox">
+                            <span>Draft Project Proposal</span>
+                        </div>
+                        <div>
+                            <span class="task-date">Tue Oct 17 2023</span>
+                        </div>
+                        <div class="editContent">
+                            <button class="edit">Edit</button>
+                            <button class="delete">Delete</button>
+                        </div>
                     </li>
-                    <li>
-                        <input type="checkbox">
-                        <span>Take Trash Out</span>
-                        <span class="task-date">Wed Oct 18 2023</span>
-                        <span class="priority yellow"></span>
+
+                    <li class="tab-content">
+                        <div>
+                            <input type="checkbox">
+                            <span>Draft Project Proposal</span>
+                        </div>
+                        <div>
+                            <span class="task-date">Tue Oct 17 2023</span>
+                        </div>
+                        <div class="editContent">
+                            <button class="edit">Edit</button>
+                            <button class="delete">Delete</button>
+                        </div>
                     </li>
-                    <li>
-                        <input type="checkbox">
-                        <span>Get Groceries</span>
-                        <span class="task-date">Wed Oct 18 2023</span>
-                        <span class="priority yellow"></span>
-                    </li>
-                    <li>
-                        <input type="checkbox">
-                        <span>Send Mail</span>
-                        <span class="task-date">Wed Oct 18 2023</span>
-                        <span class="priority yellow"></span>
-                    </li>
+
+  
                 </ul>
-                <button id="addTaskButton">+ Add Task</button>
             </div>
-            <div class="completed-tasks">
-                <h2>Completed</h2>
-                <ul id="completedTasks"></ul>
-            </div>
+            <button class="btn btnComplete">Complete</button>
         </main>
     </div>
 <script src="/assets/js/main.js"></script>
