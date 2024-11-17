@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+   <form class="taskAction">
+      <div class="taskName">
+          <label for="">Task: </label>
+          <input name="task" class="todo-input" type="text" placeholder=" Add a task">
+      </div>
+
+      <div class="deadline">
+          <label>Deadline: </label>
+          <input type="date" name="deadline">
+      </div>
+      <button class="btn addTaskButton" type="btn">+ Add Task</button>
+  </form>
+  <ul class="show">
+      
+  </ul>
+  
+  <script>
+
+      let database = {
+         tasks: [
+         ],
+      }
+
+      let id = 1;
+      const btnElement = document.querySelector(".addTaskButton");
+      btnElement.onclick = (e) => {
+         e.preventDefault();
+         let taskElement = document.querySelector('input[name="task"]');
+         let deadlineElement = document.querySelector('input[name="deadline"]');
+         let showElement = document.querySelector(".show");
+         
+
+         let newObject = {
+            "id": ++id,
+            "name": taskElement.value,
+            "date": deadlineElement.value
+         }
+         taskElement.value = "";
+         deadlineElement.value = "";
+         database.tasks.push(newObject);
+
+         let xhtml = "";
+         database.tasks.forEach((task) => {
+            xhtml += `<li>${task.id} ${task.name} ${task.date}</li>`
+         })
+
+         showElement.innerHTML = xhtml;
+         
+      }
+      
+
+  </script>
+</body>
+</html>
