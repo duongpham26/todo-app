@@ -20,11 +20,11 @@ function loadTasksFromLocalStorage() {
         const newTask = document.createElement('li');
         newTask.classList.add('tab-content');
         newTask.innerHTML = `
-            <div>
+            <div class="editContent">
                 <input type="checkbox" ${task.isCompleted ? 'checked' : ''}>
                 <span>${task.taskName}</span>
             </div>
-            <div>
+            <div class="editContent">
                 <span class="task-date">${task.taskDate}</span>
             </div>
             <div class="editContent">
@@ -58,7 +58,7 @@ function addTask(event) {
         <div class="editContent">
             <span class="task-date">${new Date(deadline).toDateString()}</span>
         </div>
-        
+
         <div class="editContent">
             <button class="edit">Edit</button>
             <button class="delete">Delete</button>
