@@ -50,13 +50,15 @@ function addTask(event) {
     const newTask = document.createElement('li');
     newTask.classList.add('tab-content');
     newTask.innerHTML = `
-        <div>
+        <div class="editContent">
             <input type="checkbox">
             <span>${taskName}</span>
         </div>
-        <div>
+
+        <div class="editContent">
             <span class="task-date">${new Date(deadline).toDateString()}</span>
         </div>
+        
         <div class="editContent">
             <button class="edit">Edit</button>
             <button class="delete">Delete</button>
