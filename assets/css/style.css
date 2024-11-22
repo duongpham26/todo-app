@@ -72,6 +72,7 @@ main .tabs {
    height: 32px;
    border: 1px solid rgb(201, 199, 199);
    border-radius: 4px;
+   padding: 10px;
 }
 
 #tasks {
@@ -90,16 +91,12 @@ main .tabs {
    border-radius: 6px;
 }
 
-.tab-content input {
-   margin: 0 8px;
+
+.task-content  {
+
 }
 
-.tab-content .editContent {
-   margin: 0 8px;
-   width: 33%;
-}
-
-.tab-content button {
+.task-content button {
    margin: 0 4px;
    width: 60px;
    padding: 4px 0;
@@ -109,24 +106,22 @@ main .tabs {
    float: right;
 }
 
-.tab-content button:hover {
+.task-content button:hover {
    opacity: 0.6;
    cursor: pointer;
 }
 
-.tab-content .edit {
+.task-content .edit {
    background-color: rgb(244, 244, 42);
-   
 }
 
-.tab-content .delete {
+.task-content .delete {
    color: white;
    background-color: red;
 }
 
-.btnComplete {
-   margin:8px 0px;
-   opacity: 1;
+.task-content .isCompleted {
+   margin: 0 8px;
 }
 
 

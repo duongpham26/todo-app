@@ -12,33 +12,41 @@
             <h1>Todo App</h1>
         </header>
         <main>
+            <!-- Tabs -->
             <div class="tabs">
-                <button class="btn btnTodayTab" >Today</button>
-                <button class="btn btnPendingTab active">Pending</button>
-                <button class="btn btnOverdueTab">Overdue</button>
-                <button class="btn btnCompleted">Completed</button>
+                <button class="btn" data-tab = 'today'>Today</button>
+                <button class="btn active" data-tab = 'pending'>Pending</button>
+                <button class="btn" data-tab = 'overdue'>Overdue</button>
+                <button class="btn" data-tab = 'completed'>Completed</button>
             </div>
+
             <div class="task-list">
+                <!-- Task Action Form -->
                     <form class="taskAction">
+                        <!-- Task Name input -->
                         <div class="taskName">
                             <label for="">Task: </label>
-                            <input class="todo-input" type="text" placeholder=" Add a task">
+                            <!-- <input class="todo-input" type="text" placeholder="Add a task"> -->
+                            <input type="text" name="taskName" placeholder="Add a task"></input>
                         </div>
 
+                        <!-- Task deadline input -->
                         <div class="deadline">
                             <label>Deadline: </label>
                             <input type="date" name="deadline">
                         </div>
-                        <button class="btn addTaskButton">+ Add Task</button>
+
+                        <!-- Add Task button -->
+                        <button type = "button" class="btn addTaskButton" onclick = "addTask()">+ Add Task</button>
                     </form>
+
                 <h2>Tasks</h2>
                 <ul id="tasks" class=".grid__row">
                     
                 </ul>
             </div>
-            <button class="btn btnComplete">Complete</button>
         </main>
     </div>
-<script src="/assets/js/main.js"></script>
+<script src="/assets/js/final.js"></script>
 </body>
 </html>
