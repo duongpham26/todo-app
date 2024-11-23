@@ -76,6 +76,10 @@ main .tabs {
   opacity: 1;
 }
 
+.taskAction .addTaskButton:hover {
+   opacity: 0.8;
+ }
+
 .taskAction input {
    height: 32px;
    border: 1px solid rgb(201, 199, 199);
@@ -138,11 +142,15 @@ main .tabs {
 
 .task-content .edit {
    background-color: rgb(244, 244, 42);
+   transition: opacity 0.2s linear;
+
 }
 
 .task-content .delete {
    color: white;
    background-color: red;
+   transition: opacity 0.2s linear;
+
 }
 
 .task-content .isCompleted {
