@@ -11,7 +11,7 @@ html {
 
 header {
    height: 100px;
-   background-color: rgb(0, 86, 0);
+   background-color: rgb(0, 103, 0);
 }
 
 header h1 {
@@ -39,25 +39,33 @@ main .tabs {
    color: white;
    background-color: rgb(0, 103, 0);
    opacity: 0.4;
+   transition: opacity 0.2s linear;
    border: none;
    border-radius: 6px ;
 }
 
 .btn:hover {
    color: white;
-   background-color: green;
+   background-color: rgb(0, 103, 0);
    opacity: 0.6;
    cursor: pointer;
 }
 
 .active {
    color: white;
-   background-color: green;
+   background-color: rgb(0, 103, 0);
    opacity: 1;
+   
+}
+
+.active:hover {
+   opacity: 1; /* Giữ nguyên độ mờ khi active */
+   pointer-events: none;
 }
 
 .taskAction {
    margin-top: 32px;
+   margin-bottom: 16px;
    display: flex;
    justify-content: end;
    gap: 10px;
@@ -84,12 +92,35 @@ main .tabs {
    display: flex;
    flex-wrap:nowrap;
    align-items: center;
-   height: 60px;
+   min-height: 60px;
    background-color: white;
    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
    margin-top: 8px;
    border-radius: 6px;
+   padding: 8px;
 }
+
+.task-content {
+   display: flex; /* Sắp xếp các phần tử con theo chiều ngang */
+   justify-content: space-between; /* Phân bổ khoảng cách đều giữa các phần tử */
+   /* align-items: center; */
+}
+
+.content {
+   flex: 1; /* Đảm bảo các phần tử con chia đều không gian */
+   min-width: 150px; /* Đặt chiều rộng tối thiểu cho từng phần */
+   margin: 5px;
+}
+
+.taskName {
+   word-wrap: break-word; 
+   white-space: normal; 
+}
+
+.deadline {
+   text-align: center; /* Căn giữa phần deadline */
+}
+
 .task-content button {
    margin: 0 4px;
    width: 60px;
@@ -115,8 +146,9 @@ main .tabs {
 }
 
 .task-content .isCompleted {
-   margin: 0 8px;
+   margin-right: 4px;
 }
+
 button.save {
    background-color: green;
    color: white;

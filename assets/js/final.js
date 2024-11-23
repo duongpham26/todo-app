@@ -128,11 +128,17 @@ function displayTask(tasks) {
         taskItem.classList.add("task-content");
         taskItem.id = task.id;
         taskItem.innerHTML = `
-            <input class="isCompleted" type="checkbox" onclick = "toggleCheckBox('${task.id}')" ${task.isCompleted ? "checked" : ""}>
-            <span class="taskName">${task.name}</span>
-            <span class="deadline">${task.deadline}</span>
-            <button class="edit" onclick="editTask('${task.id}')">Edit</button>
-            <button class="delete" onclick="deleteTask('${task.id}')">Delete</button>
+            <div class="content">
+                <input class="isCompleted" type="checkbox" onclick = "toggleCheckBox('${task.id}')" ${task.isCompleted ? "checked" : ""}>
+                <span class="taskName">${task.name}</span>
+            </div>
+            <div class="content">
+                <span class="deadline">${task.deadline}</span>
+            </div>
+            <div class="content">
+                <button class="edit" onclick="editTask('${task.id}')">Edit</button>
+                <button class="delete" onclick="deleteTask('${task.id}')">Delete</button>
+            </div>
         `;
 
         taskList.appendChild(taskItem);
