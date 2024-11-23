@@ -117,10 +117,10 @@ main .tabs {
 .task-content .isCompleted {
    margin: 0 8px;
 }
-/* button .save{
-   color: white;
+button.save {
    background-color: green;
-} */
+   color: white;
+}
 
 
 
