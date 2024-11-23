@@ -131,8 +131,8 @@ function displayTask(tasks) {
             <input class="isCompleted" type="checkbox" onclick = "toggleCheckBox('${task.id}')" ${task.isCompleted ? "checked" : ""}>
             <span class="taskName">${task.name}</span>
             <span class="deadline">${task.deadline}</span>
-            <button class="edit" onclick="deleteTask('${task.id}')">Delete</button>
-            <button class="delete" onclick="editTask('${task.id}')">Edit</button>
+            <button class="edit" onclick="editTask('${task.id}')">Edit</button>
+            <button class="delete" onclick="deleteTask('${task.id}')">Delete</button>
         `;
 
         taskList.appendChild(taskItem);
@@ -196,5 +196,85 @@ function toggleCheckBox(taskID) {
 }
 
 function editTask(taskID) {
+    const taskItem = document.getElementById(taskID);
+    const editButton = taskItem.querySelector('.edit, .save'); // Select the Edit/Save button
+    
+    if (editButton.classList.contains('edit')) {
+        // Switch to Edit Mode
+        const taskNameElement = taskItem.querySelector('.taskName');
+        const taskDateElement = taskItem.querySelector('.deadline');
 
+        // Create input for task name
+        const taskNameInput = document.createElement('input');
+        taskNameInput.type = 'text';
+        taskNameInput.value = taskNameElement.textContent.trim();
+        taskNameInput.classList.add('taskNameInput');
+        taskNameElement.replaceWith(taskNameInput);
+
+        // Create input for deadline
+        const taskDateInput = document.createElement('input');
+        taskDateInput.type = 'date';
+        taskDateInput.value = new Date(taskDateElement.textContent).toISOString().split('T')[0];
+        taskDateInput.classList.add('deadlineInput');
+        taskDateElement.replaceWith(taskDateInput);
+
+        // Change button text to "Save"
+        editButton.textContent = 'Save';
+        editButton.classList.remove('edit');
+        editButton.classList.add('save');
+    } else if (editButton.classList.contains('save')) {
+        // Switch to View Mode
+        const taskNameInput = taskItem.querySelector('input[type="text"]');
+        const taskDateInput = taskItem.querySelector('input[type="date"]');
+
+        // Validate inputs
+        const updatedName = taskNameInput.value.trim();
+        const updatedDeadline = taskDateInput.value;
+
+        if (!updatedName || !updatedDeadline) {
+            alert("Task name and deadline cannot be empty.");
+            return;
+        }
+
+        // Replace input with "span" for task name
+        const taskNameElement = document.createElement('span');
+        taskNameElement.classList.add('taskName');
+        taskNameElement.textContent = updatedName;
+        taskNameInput.replaceWith(taskNameElement);
+
+        // Replace input with "span" for deadline
+        const taskDateElement = document.createElement('span');
+        taskDateElement.classList.add('deadline');
+        taskDateElement.textContent = new Date(updatedDeadline).toDateString();
+        taskDateInput.replaceWith(taskDateElement);
+
+        // Update task in `allTasks`
+        const task = allTasks.find((task) => task.id === taskID);
+        if (task) {
+            task.name = updatedName;
+            task.deadline = new Date(updatedDeadline).toDateString();
+        }
+
+        // Change button text to "Edit"
+        editButton.textContent = 'Edit';
+        editButton.classList.remove('save');
+        editButton.classList.add('edit');
+
+        // Save tasks to localStorage
+        saveToLocalStorage();
+        loadTasks(); // Reload tasks to reflect changes
+    }
 }
+function deleteTask(taskID) {
+    // Find and remove the task from `allTasks`
+    allTasks = allTasks.filter(task => task.id !== taskID);
+    // Save updated tasks to localStorage
+    saveToLocalStorage();
+    // Remove task from DOM
+    const taskItem = document.getElementById(taskID);
+    if (taskItem) {
+        taskItem.remove();
+    }
+    loadTasks();// Reload tasks to reflect changes
+}
+

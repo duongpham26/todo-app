@@ -90,12 +90,6 @@ main .tabs {
    margin-top: 8px;
    border-radius: 6px;
 }
-
-
-.task-content  {
-
-}
-
 .task-content button {
    margin: 0 4px;
    width: 60px;
@@ -123,7 +117,10 @@ main .tabs {
 .task-content .isCompleted {
    margin: 0 8px;
 }
-
+/* button .save{
+   color: white;
+   background-color: green;
+} */
 
 
 
